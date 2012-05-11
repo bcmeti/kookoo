@@ -1,8 +1,13 @@
 Kookoo::Application.routes.draw do
   devise_for :users
 
-  # resources :users
+  
+  # User's profile page
+  resources :users, only: [:show]
+  
   resources :messages, except: [:edit, :update]
+
+  # User's dashboard page 
   root to: 'messages#index'
 
   # The priority is based upon order of creation:

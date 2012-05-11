@@ -1,0 +1,14 @@
+body {
+  background-image: url("wavecut.png");
+  background-repeat: repeat;
+  margin: 0;
+  padding-bottom: 50px;
+}
+
+.content {
+  background-image: url("wash-white-30.png");
+  margin: 0;
+  padding: 25px;
+  width: 956px;
+  margin-top: 40px;
+}

@@ -1,0 +1,63 @@
+!!!
+%html
+  
+  %head
+    
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1, maximum-scale=1"}
+    
+    / Example of one technique to make the page title dynamic.
+    %title= content_for?(:title) ? yield(:title) : "KooKoo"
+    
+    / Standarad ways to include javascript and css assets.
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+
+    / Returns meta tags “csrf-param” and “csrf-token” with the name of the cross-site request forgery protection parameter and token.
+    = csrf_meta_tags
+    
+    / Allows you to add view specific assets from views and partials. 
+    = yield(:head)
+  
+  %body
+    
+    %header(class="navbar navbar-fixed-top")
+      %nav(class="navbar-inner")
+        %div(class="container")
+          
+          / Site name
+          = link_to 'KooKoo', root_path, class: 'brand'
+          
+          / Navbar items
+          / NOTE: Could move to partial and call = render 'layouts/navigation.'
+          %ul.nav
+
+            / Devise installed
+            / TODO: Uncomment after you install Devise.
+            - if user_signed_in?
+              %li= link_to 'Home', root_path
+              / %li= link_to 'Profile', user_path(current_user)
+              %li= link_to 'Edit Profile', edit_user_registration_path
+              %li= link_to 'Sign Out', destroy_user_session_path, method: 'delete'
+            - else
+              %li= link_to 'Sign In', new_user_session_path
+              %li= link_to 'Sign Up', new_user_registration_path
+
+    #main(role="main")
+      .container
+        .content
+          .row
+            .span12
+
+              / Displays all flash messages with an optional close button.
+              / NOTE: Could move to a partial and call = render 'layouts/messages.'
+              - flash.each do |name, msg|
+                %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+                  %a.close(data-dismiss="alert") ×
+                  %div{:id => "flash_#{name}"}= msg
+
+              / Displays the content of the view.
+              = yield
+
+          %footer
