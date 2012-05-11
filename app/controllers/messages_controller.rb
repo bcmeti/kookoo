@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    @messages = current_user.messages
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,15 +32,15 @@ class MessagesController < ApplicationController
     end
   end
 
-  # GET /messages/1/edit
-  def edit
-    @message = Message.find(params[:id])
-  end
+  # # GET /messages/1/edit
+  # def edit
+  #   @message = current_user.messages.find(params[:id])
+  # end
 
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(params[:message])
+    @message = current_user.messages.new(params[:message])
 
     respond_to do |format|
       if @message.save
@@ -55,24 +55,24 @@ class MessagesController < ApplicationController
 
   # PUT /messages/1
   # PUT /messages/1.json
-  def update
-    @message = Message.find(params[:id])
+  # def update
+  #   @message = Message.find(params[:id])
 
-    respond_to do |format|
-      if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
-    end
-  end
+  #   respond_to do |format|
+  #     if @message.update_attributes(params[:message])
+  #       format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+  #       format.json { head :no_content }
+  #     else
+  #       format.html { render action: "edit" }
+  #       format.json { render json: @message.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # DELETE /messages/1
   # DELETE /messages/1.json
   def destroy
-    @message = Message.find(params[:id])
+    @message = current_user.messages.find(params[:id])
     @message.destroy
 
     respond_to do |format|

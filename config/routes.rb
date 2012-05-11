@@ -1,7 +1,9 @@
 Kookoo::Application.routes.draw do
-  resources :users
+  devise_for :users
 
-  resources :messages
+  # resources :users
+  resources :messages, except: [:edit, :update]
+  root to: 'messages#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
