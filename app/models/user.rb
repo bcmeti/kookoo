@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :bio, :email, :full_name, :location
   
   has_many :messages, dependent: :destroy
+  
+  has_many :subscriptions, :class_name => "Subscription", :foreign_key => "subscriber_id" 
+  has_many :subscribers, :class_name => "Subscription", :foreign_key => "subscribee_id"
 
   # attr_accessible :bio, :email, :full_name, :location
   validates :full_name, :email, presence: true

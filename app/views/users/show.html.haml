@@ -1,0 +1,24 @@
+%p
+  %b Full name:
+  = @user.full_name
+%p
+  %b Email:
+  = @user.email
+%p
+  %b Location:
+  = @user.location
+%p
+  %b Bio:
+  = @user.bio
+
+-unless me?
+  -if(not subscribed?)
+    %form(action='#{subscriptions_path}' method='POST')
+      %input(type='hidden' name='subscribee_id' value='#{@user.id}')
+      %input(type='hidden' name='subscriber_id' value='#{current_user.id}')
+      %input.btn.btn-primary(type='submit' value='Subscribe')
+  - else
+    %form(action='#{subscription_path}' method='DELETE')
+      %input(type='hidden' name='subscribee_id' value='#{@user.id}')
+      %input(type='hidden' name='subscriber_id' value='#{current_user.id}')
+      %input.btn.btn-primary(type='submit' value='Unsubscribe')
