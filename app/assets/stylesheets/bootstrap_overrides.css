@@ -1,3 +1,14 @@
+.clearfix {
+  clear: both;
+}
+
+.mini-stats-list{border-top:1px solid #E8E8E8;border-bottom:1px solid #E8E8E8;margin-top:10px;}
+.mini-stats-list ul{list-style:none;}
+.mini-stats-list li{display:inline;}
+
+.compose-new-message{margin-top:10px;}
+.compose-new-message button{width:100%;}
+
 body {
   background-image: url("wavecut.png");
   background-repeat: repeat;
@@ -11,4 +22,40 @@ body {
   padding: 25px;
   width: 956px;
   margin-top: 40px;
+}
+
+.panel {
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -webkit-border-top-left-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  -moz-border-radius-topleft: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  /*-moz-background-clip: padding;*/
+  /*-webkit-background-clip: padding-box;*/
+  /*background-clip: padding-box;*/
+  /*border: 1px solid gray;*/
+  /*border: 1px solid rgba(0, 0, 0, 0.05);*/
+  background-color: #ffffff;
+
+}
+
+.panel header {
+  padding-top: 5px;
+  padding-left: 8px;
+  padding-bottom: 5px;
+  margin-bottom: 0px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.panel article {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
 }

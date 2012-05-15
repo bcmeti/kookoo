@@ -1,7 +1,6 @@
 Kookoo::Application.routes.draw do
   devise_for :users
 
-  
   # User's profile page
   resources :users, only: [:show]
   
