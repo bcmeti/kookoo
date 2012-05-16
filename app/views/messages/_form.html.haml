@@ -1,0 +1,11 @@
+= form_for(@message) do |f| 
+  - if @message.errors.any? 
+    #error_explanation
+      %h2= '#{pluralize(@message.errors.count, "error")} prohibited this message from being saved:'
+      %ul
+        - @message.errors.full_messages.each do |msg|
+          %li= msg
+  .field.panel(style="padding:10px")
+    = f.label "Say Something!"
+    = f.text_area :body, :style => "height:35px; width:580px;" 
+    = f.submit :value => 'Post Message', :class => "btn btn-primary"

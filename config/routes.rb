@@ -6,7 +6,9 @@ Kookoo::Application.routes.draw do
   
   resources :messages, except: [:edit, :update]
   resources :subscriptions, only: [:create, :destroy]
-  
+ 
+  match 'users/search', :as => :search
+ 
   # User's dashboard page 
   root to: 'messages#index'
 

@@ -1,0 +1,3 @@
+.span12.panel
+  - @users.each do |user|
+    = render :partial => "users/search_list", :locals => {:user => user}

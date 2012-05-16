@@ -1,0 +1,10 @@
+%div(style="margin-top: 10px;")
+  %table
+    %tr(style='text-align:center')
+      %th(style='font-size:8pt; padding-left:10px; padding-right:10px;') Messages
+      %th(style='font-size:8pt; padding-left:10px; padding-right:10px;') Subscriptions
+      %th(style='font-size:8pt; padding-left:10px; padding-right:10px;') Subscribers
+    %tr(style='text-align:center')
+      %td(style='font-size:16pt')= user.messages.count
+      %td(style='font-size:16pt')= user.subscriptions.count
+      %td(style='font-size:16pt')= user.subscribers.count

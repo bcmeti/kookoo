@@ -1,14 +1,24 @@
 class SubscriptionsController < ApplicationController
 
   def create
-    @sub = Subscription.create({:subscriber_id => params[:subscriber_id], :subscribee_id => params[:subscribee_id]})
-    redirect_to :back
+
+    Rails.logger.info "Got into the create method"
+    
+    @sub = Subscription.create(params[:subscription])
+
+    Rails.logger.info "Trying to read sub #{@sub}"
+
+    respond_to do |format|
+      format.html { redirect_to :back, notice: "Subscription successfully created" }
+    end
   end
 
   def destroy
-    @sub = Subscription.find_by_subscriber_id_and_subscribee_id(params[:subscriber_id], params[:subscribee_id])
-    @sub.destroy
-    redirect_to :back
+    Subscription.destroy(params[:id])
+
+    respond_to do |format|
+      format.html { redirect_to :back, notice: "Subscription successfully removed" }
+    end
   end
 
 end

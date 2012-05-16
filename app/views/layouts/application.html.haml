@@ -44,6 +44,10 @@
               %li= link_to 'Sign In', new_user_session_path
               %li= link_to 'Sign Up', new_user_registration_path
 
+          %form.form-horizontal.pull-right(action="#{search_path}" method="POST" style="margin-bottom:3px")
+            %input.navbar-search.span4(type="text" name="term" placeholder="Find Users..." style="margin-top:0px")
+            %input.btn(type="submit" value="Search")
+
     #main(role="main")
       .container
         .content

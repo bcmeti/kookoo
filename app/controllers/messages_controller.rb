@@ -2,7 +2,14 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = current_user.messages
+    @user = current_user
+
+    query = "user_id=#{current_user.id} OR "
+    
+    @subscriptions = current_user.subscriptions.select("subscribee_id")
+
+    @messages = Message.where(:user_id => @subscriptions)
+    @message = Message.new
 
     respond_to do |format|
       format.html # index.html.erb
@@ -44,10 +51,10 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
+        format.html { redirect_to :back, notice: 'Message was successfully created.' }
         format.json { render json: @message, status: :created, location: @message }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to :back }
         format.json { render json: @message.errors, status: :unprocessable_entity }
       end
     end
