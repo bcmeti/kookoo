@@ -1,5 +1,9 @@
 # KooKoo Rails Lab Syllabus
 
+## The Master Gist for Views
+
+https://gist.github.com/e8836212f53af9a58bd5
+
 ## UPDATED VIEW LOCATIONS 
 
 * You can find the views converted to erb here:
