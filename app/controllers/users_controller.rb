@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   def search
     @users = User.where("full_name LIKE ?", "%#{params[:term]}%")
-
+    Rails.logger.info ("WHERE DID MY SESSION GO! #{session[:user_id]}")
     respond_to do |format|
       format.html
     end
@@ -26,12 +26,6 @@ class UsersController < ApplicationController
     @messages = @user.messages
     @message = Message.new
     @subscription = Subscription.where("subscriber_id=#{current_user.id} AND subscribee_id=#{@user.id}").first_or_initialize
-    
-    @subscription[:subscriber_id] = current_user.id
-    @subscription[:subscribee_id] = @user.id
-
-    Rails.logger.info "I have a subscription #{@subscription.subscriber_id} #{@subscription.subscribee_id}"
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @user }

@@ -1,16 +1,20 @@
 Kookoo::Application.routes.draw do
-  devise_for :users
 
-  # User's profile page
-  resources :users, only: [:show]
-  
-  resources :messages, except: [:edit, :update]
-  resources :subscriptions, only: [:create, :destroy]
+  get "messages/create"
+
+  get "dashboard/index"
+
+  resources :users
+  resources :user_sessions
+  resources :messages
+  resources :subscriptions 
+
+  get "log_out" => "user_sessions#destroy", :as => "log_out"
+  get "log_in" => "user_sessions#new", :as => "log_in"
  
   match 'users/search', :as => :search
  
-  # User's dashboard page 
-  root to: 'messages#index'
+  root :to => "dashboard#index" 
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

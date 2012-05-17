@@ -1,8 +1,0 @@
--if me?
-  = render :partial => 'messages/form' 
-
-#items-list.panel(style="padding:10px")
-  - messages.each_with_index do |message, index|
-    = render :partial => "messages/message", :locals => {:message => message}
-    - unless(message == @messages.last)
-      = image_tag 'line_divider.jpg'
