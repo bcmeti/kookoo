@@ -1,8 +1,8 @@
 <% messages.each do |message| %>
   <div class='row'>
     <div class='span1'>
-      <a href="<%= user_path(@user) %>" class="thumbnail" style="float:left;margin-right:8px;">
-        <img src="http://flickholdr.com/50/50/face/<%= @user.id %>" alt="<%= @user.full_name %>"/>
+      <a href="<%= user_path(message.author) %>" class="thumbnail" style="float:left;margin-right:8px;">
+        <img src="http://flickholdr.com/50/50/face/<%= message.author.id %>" alt="<%= message.author.full_name %>"/>
       </a>
     </div>
     <div class="span6">

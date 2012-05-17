@@ -43,7 +43,7 @@
         </tr>
       </table>
     </div>
-
+  </div>
   <% if me? %>
     <div class='span8 well'>
       <%= form_for @message, :html => { :style => 'margin-bottom:0px'} do |f| %>
@@ -66,5 +66,4 @@
       <%= render :partial => 'messages/pane', :locals => { :messages => @messages } %>
     </div>
   <% end %>
-  </div>
 </div>

@@ -23,7 +23,7 @@
           </ul>
 
           <%= form_tag search_path, :class => 'form-horizontal pull-right', :style => 'margin:0px' do %>
-            <%= text_field_tag :term, "Find Users", :style => 'margin-top:5px' %>
+            <%= text_field_tag :term, nil, :style => 'margin-top:5px' %>
             <%= submit_tag "Search", :class => 'btn btn-primary' %>
           <% end %>
           
@@ -31,7 +31,7 @@
         </div>
       </div>
       
-      <div class='container' style='margin-top:20px'>
+      <div class='container' style="margin-top:50px">
         <div class='content'>
           <div class='row'>
             <div class='span12'>
