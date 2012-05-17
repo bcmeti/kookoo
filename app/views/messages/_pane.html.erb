@@ -1,0 +1,18 @@
+<% messages.each do |message| %>
+  <div class='row'>
+    <div class='span1'>
+      <a href="<%= user_path(@user) %>" class="thumbnail" style="float:left;margin-right:8px;">
+        <img src="http://flickholdr.com/50/50/face/<%= @user.id %>" alt="<%= @user.full_name %>"/>
+      </a>
+    </div>
+    <div class="span6">
+      <b><%= link_to message.author.full_name, user_path(message.author) %></b>
+      <p style="font-size:8pt; color:#AAA; line-height:8pt">"<%= distance_of_time_in_words_to_now(message.created_at)%> ago" </p>
+      <p style="font-size:14px; color:#333; line-height:24px"> <%= message.body %> </p>
+
+      <% unless(message == messages.last) %>
+        <hr />
+      <% end %>
+    </div>
+  </div>
+<% end %>

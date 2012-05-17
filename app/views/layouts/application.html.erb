@@ -1,0 +1,53 @@
+
+<html>
+  <head>
+    <title> Kookoo </title>
+    <%= stylesheet_link_tag "application", :media => "all" %> 
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %> 
+  <body>
+
+    <!-- UNIVERSAL NAVIGATION BAR -->
+    <div class='navbar navbar-fixed-top'>
+      <div class='navbar-inner'>
+        <div class='container'>
+          <ul class='nav'>
+            <%= link_to "KooKoo", root_path, class: 'brand' %>
+            
+            <% if user_logged_in? %>
+              <li> <%= link_to "Log Out", log_out_path %> </li>   
+            <% else %>
+              <li> <%= link_to "Log In", log_in_path %> </li>
+              <li> <%= link_to "Sign Up", new_user_path %> </li>
+            <% end %>
+          </ul>
+
+          <%= form_tag search_path, :class => 'form-horizontal pull-right', :style => 'margin:0px' do %>
+            <%= text_field_tag :term, "Find Users", :style => 'margin-top:5px' %>
+            <%= submit_tag "Search", :class => 'btn btn-primary' %>
+          <% end %>
+          
+          </div>
+        </div>
+      </div>
+      
+      <div class='container' style='margin-top:20px'>
+        <div class='content'>
+          <div class='row'>
+            <div class='span12'>
+
+              <!-- UNIVERSAL STATUS MESSAGES -->
+              <% flash.each do |name, msg| %>
+                <div class="alert alert-<%= (name == :notice) ? "success" : "error" %>">
+                  <a class='close' data-dismiss="alert">×</a>
+                  <div id="flash_<%= name %>">msg</div>
+                </div>
+              <% end %>
+            <!-- ALL LOADED CONTENT WILL LOAD HERE -->
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
