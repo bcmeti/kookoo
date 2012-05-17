@@ -1,5 +1,10 @@
 # KooKoo Rails Lab Syllabus
 
+## UPDATED VIEW LOCATIONS 
+
+* You can find the views converted to erb here:
+https://gist.github.com/e8836212f53af9a58bd5
+
 ## Lesson 1: Creating the Project
 
 The basis of any new rails site is the initial generation. In this very short lesson, we get the rails foundation for our site KooKoo generated on our file system.
